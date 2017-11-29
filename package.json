@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "PMR Managing App",
   "main": "main.js",
+  "private": "true",
+  "repository": "https://github.com/Kubik42/pmr-manager",
   "dependencies": {
     "electron": "^1.8.1",
     "electron-context-menu": "^0.9.1",
