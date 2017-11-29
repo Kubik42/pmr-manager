@@ -1,0 +1,18 @@
+body {
+	-webkit-app-region: drag;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	margin: 0px 0px 0px 0px;
+	font-family: "Avenir", sans-serif;
+}
+
+.not-dragable {
+	-webkit-app-region: no-drag;
+}
+
+.clearfix {
+	clear: both;
+	content: "";
+	display: inline-block;
+}

@@ -1,0 +1,101 @@
+.pmr-list-container {
+	height: calc(100% - 61px);  /* subtract the size of the search box and bottom padding */
+	margin-bottom: 10px;
+	overflow: hidden;
+}
+.pmr-list {
+	width: 100%;
+	height: 100%;
+	display: none;
+	font-family: "Avenir";
+}
+.pmr-list.is-shown {
+	display: block;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+/*****************************************************
+  Widget
+******************************************************/
+
+.pmr-widget {
+	width: 100%;
+	height: 65px;
+	display: block;
+	padding-top: 15px;
+	transition-duration: 0.1s;
+	border-bottom: 1px solid lightgray;
+}
+.pmr-widget:focus {
+	outline: none !important;
+}
+.pmr-widget:hover {
+	background-color: rgba(44, 72, 103, 0.05) !important;
+	cursor: pointer;
+}
+.pmr-widget.is-selected {
+	background-color: rgba(44, 72, 103, 0.05) !important;
+	border-left: 5px solid #D9534F;
+}ˇ
+.pmr-widget.is-selected:hover {
+	background-color: rgba(44, 72, 103, 0.05);
+	cursor: pointer;
+}
+.pmr-widget.is-hidden {
+	display: none;
+}
+.pmr-widget h1 {
+	margin: 0;
+	clear: both;
+	font-size: 16px;
+	font-weight: 500;
+}
+.pmr-widget h2 {
+	margin: 0;
+	clear: both;
+	padding-top: 8px;
+	color: gray;
+	font-size: 15px;
+	font-weight: 300;
+}
+
+.pmr-widget-sev-icon {
+	width: 25px;
+	padding-top: 12px;
+	padding-left: 15px;
+	padding-right: 15px;
+	float: left;
+}
+.sev1 {
+	color: #ff4d3d;
+}
+.sev2 {
+	color: #ff9e53;
+}
+
+.pmr-widget-part {
+	width: auto;
+	color: #2F3235;
+	text-align: left;
+	float: left;
+}
+
+/*****************************************************
+  Trash
+******************************************************/
+
+#empty-trash-button {
+	width: 100%;
+	color: #2F3235;
+	font-weight: 500;
+	font-size: 16px;
+	text-align: center;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid lightgray;
+	background-color: inherit;
+}
+#empty-trash-button:hover {
+	background-color: rgba(44, 72, 103, 0.05);
+}

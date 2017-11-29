@@ -1,0 +1,21 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "PMR Managing App",
+  "main": "main.js",
+  "dependencies": {
+    "electron": "^1.8.1",
+    "electron-context-menu": "^0.9.1",
+    "electron-json-storage": "^3.1.1",
+    "jquery": "^3.2.1",
+    "xml2js": "^0.4.19"
+  },
+  "devDependencies": {
+    "xmldom": "^0.1.27"
+  },
+  "scripts": {
+    "start": "./node_modules/.bin/electron ."
+  },
+  "author": "kubik",
+  "license": "ISC"
+}

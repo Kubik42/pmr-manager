@@ -1,0 +1,238 @@
+#content {
+	width: 65%;
+	height: 100%;
+	float: right;
+	background-color: #FBFBFB;
+}
+
+.pmr-content {
+	height: calc(100% - 59px); /* subtract the size of the edit bar */
+	width: 100%;
+	display: none;
+}
+.pmr-content.is-shown {
+	display: block;
+	overflow-y: auto;
+	overflow-x: hidden; /* no horizontal scrolling */
+}
+
+/*****************************************************
+  PMR Section
+******************************************************/
+
+#pmr-section-top {
+	padding-top: 0;
+}
+
+.pmr-section {
+	width: 95%;
+	height: auto;
+	font-family: 'Avenir';
+	margin-right: 24px;
+	margin-left: 24px;
+	padding-top: 17px;
+	padding-bottom: 17px;
+}
+.pmr-section h1 {
+	margin: 0;
+	cursor: default;
+	padding-bottom: 14px;
+	font-size: 16px;
+	font-weight: 500;
+}
+.pmr-section p {
+	font-size: 16px;
+	margin: 0;
+	padding: 0;
+	-webkit-user-modify: read-write;  /*makes content editable*/
+}
+.pmr-section p:hover {
+	background-color: rgba(44, 72, 103, 0.05);
+}
+.pmr-section ul {
+	padding: 0;
+	margin: 0; 
+	margin-left: -7px; /* removes left margin from the first element */
+	list-style-type: none;
+}
+.pmr-section ul li {
+	float: left;
+	cursor: default;
+	text-align: center;
+	margin-left: 10px; /* adds spacing between each subsequent element */
+	position: relative;
+}
+
+/*****************************************************
+  Edit Bar
+******************************************************/
+
+.edit-bar-container {
+	height: 30px;
+	width: 100%;
+	margin-top: 14px;
+	margin-bottom: 15px;
+}
+
+.edit-bar {
+	display: none;
+	float: right;
+	margin-right: 16px; /* 16 + 5 = 21 (like top padding)*/
+}
+
+.edit-bar.is-shown {
+	display: block;
+}
+
+.pmr-edit-button {
+	height: 30px;
+	font-family: "Avenir" !important;
+	font-size: 13px !important;
+	border: solid 1px lightgray !important;
+	border-radius: 6px;
+	background-color: inherit;
+	margin-right: 5px;
+	float: left;
+}
+
+#pmr-archive-button {
+	color: default;
+}
+#pmr-archive-button:hover {
+	background-color: #E6E6E6;
+	cursor: pointer;
+}
+
+#pmr-unarchive-button {
+	color: default;
+}
+#pmr-unarchive-button:hover {
+	background-color: #E6E6E6;
+	cursor: pointer;
+}
+
+#pmr-save-button,
+#pmr-restore-button {
+	color: white;
+	background-color: #1E9D74;
+}
+#pmr-save-button:hover,
+#pmr-restore-button:hover {
+	background-color: #167254;
+	cursor: pointer;
+}
+
+#pmr-delete-button {
+	color: white;
+	background-color: #D9534F;
+}
+#pmr-delete-button:hover {
+	background-color: #C9302C;
+	cursor: pointer;
+}
+
+#pmr-purge-button {
+	color: white;
+	background-color: #C9302C;
+}
+
+#pmr-purge-button:hover {
+	border: 1px solid #C9302C;
+	color: orange;
+	cursor: pointer;
+}
+
+/*****************************************************
+  Title & Environment
+******************************************************/
+
+#pmr-title {
+	cursor: text;
+	font-size: 26px;
+	padding: 0;
+	-webkit-user-modify: read-write; /*makes content editable*/
+}
+#pmr-title:hover {
+	background-color: rgba(44, 72, 103, 0.05);
+}
+
+#pmr-env-list {
+	font-size: 14px;
+	color: gray;
+}
+#pmr-env-list li {
+	white-space: pre;
+}
+#pmr-env-list h1 {
+	display: inline;
+	font-size: 14px;
+	font-weight: 400;
+}
+#pmr-env-list p {
+	display: inline;
+	font-size: 14px;
+	cursor: text;
+}
+
+/*****************************************************
+  Info List
+******************************************************/
+
+#pmr-info-list {
+}
+#pmr-info-list li {
+	white-space: pre;
+	clear: both;
+}
+#pmr-info-list b {
+	font-weight: 500;
+}
+#pmr-info-list p {
+	float: none;
+	display: inline;
+	cursor: text;
+}
+
+/*****************************************************
+  Tag List
+******************************************************/
+
+#pmr-tag-list {
+}
+#pmr-tag-list li {
+	color: #C9CCCC;
+	background-color: #303E4D;
+	padding: 2px 8px 2px 8px;
+	border-radius: 6px;
+}
+#pmr-tag-list li h1 {
+	float: left;
+	font-weight: 400;
+	margin: 0;
+	padding: 0;
+}
+#pmr-tag-list li:hover h1 {
+	color: white;
+}
+#pmr-tag-list li .tag-remove-button {
+	width: auto;
+	height: auto;
+	float: right;
+	padding: 0;
+	margin-top: 2px;
+	margin-left: 6px;
+}
+#pmr-tag-list li .tag-remove-icon {
+	margin: 0;
+	padding: 0;
+	visibility: visible;
+	font-size: 17px;
+	color: #C9CCCC;
+	z-index: 1;
+	-webkit-text-stroke: 1.5px #303E4D;
+}
+#pmr-tag-list li .tag-remove-icon:hover {
+	color: white;
+	cursor: pointer;
+	-webkit-text-stroke: 1.0px #303E4D;
+}

@@ -1,0 +1,27 @@
+.siderbar {
+	width: 35%;
+	height: 100%;
+	float: left;
+	background-color: #FBFBFB;
+}
+
+.left-sidebar {
+	-webkit-box-sizing: border-box;
+	padding-top: 46px;
+	width: 30%;
+	height: 100%;
+	float: left;
+	background-color: #303E4D; /* blue like slack */
+	/*background-color: #2F3235;     /* black like bear */
+}
+
+.right-sidebar {
+	-webkit-box-sizing: border-box;
+	padding-top: 0;
+	width: 70%;
+	height: 100%;
+	float: right;
+	color: #C9CCCC;
+	background-color: inherit;
+	border-right: 1px solid lightgray;
+}

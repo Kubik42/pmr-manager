@@ -1,0 +1,22 @@
+.button {
+	border: none;
+	display: block;
+	text-align: left;
+	color: inherit;
+	font-size: 16px;
+	font-family: inherit;
+	text-decoration: none;
+}
+
+.button:hover {
+	cursor: pointer;
+}
+
+/* removes the blue border around button when the mouse is pressed on top of it */
+.button:focus {
+	outline: none !important;
+}
+
+.button.is-selected {
+	outline: none !important;
+}

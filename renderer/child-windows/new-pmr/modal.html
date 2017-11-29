@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html> 
+    <head>
+        <title>Create a new PMR</title>
+        <link rel="stylesheet" href="modal.css">
+    </head>
+    <body>
+        <div>
+            <h2>Enter PMR details:</h2>
+            <!-- title and code -->
+            <form>
+                <input id="title" type="text" placeholder="Title" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Title'"><br>
+                <input id="code" type="text" placeholder="Code" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Code'"><br>
+            </form>
+            <table>
+                <tr>
+                    <td id='sev-1'>1</td>
+                    <td id='sev-2'>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                </tr>
+            </table>
+            <div>
+                <p id='error-pmr-exists' class='error'>A PMR with that code already exists in the database</p>
+                <p id='error-invalid-entries' class='error'>Fill in all fields before you submit</p>
+            </div>
+            <!-- submit or cancel -->
+            <button id="submit">Submit</a>
+            <button id="cancel">Cancel</a>
+        <div>
+    </body>
+
+    <script src="nav.js"></script>
+</html>
