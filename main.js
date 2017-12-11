@@ -11,11 +11,12 @@ ipc.on('new-pmr-created', function (event, data) {
     var dir = 'renderer/main-window/json/db/' + data[1];
     if (!fs.existsSync(dir)){
         fs.mkdirSync(dir);
+        // cp main-window/json/template.json main-window/json/db/code/code.pmr
+        mainWindow.webContents.send('new-pmr-created', data);
+        event.sender.send('pmr-created-success');
     } else {
         event.sender.send('pmr-already-exists');
     }
-    // cp main-window/json/template.json main-window/json/db/code/code.pmr
-    mainWindow.webContents.send('new-pmr-created', data);
 });
 
 app.on('ready', function () {

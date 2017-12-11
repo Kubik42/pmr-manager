@@ -4,17 +4,16 @@ const ipc = require('electron').ipcRenderer;
 document.getElementById('submit').addEventListener('click', () => {
     var title = document.getElementById('title').value;
     var code = document.getElementById('code').value;
-    var severity = parseInt(document.getElementsByClassName('is-selected')[0].innerText);
+    var severity = document.getElementsByClassName('is-selected');
 
     // checking if inputs are valid.
-    if (!_validTitle(title) || !_validCode(code) || !severity) { 
-        document.getElementById('error-invalid-entires').classList.add('is-shown');
-        return; 
+    if (!_validTitle(title) || !_validCode(code) || !severity.length) { 
+        _hideOther('p.is-shown', 'is-shown');
+        document.getElementById('error-invalid-form').classList.add('is-shown');
+        return;
     }
-
     // send title and code to main process.
-    ipc.send('new-pmr-created', [title, code, severity]);
-    window.close();
+    ipc.send('new-pmr-created', [title, code, parseInt(severity[0].innetText)]);
 });
 
 // cancel
@@ -23,18 +22,20 @@ document.getElementById('cancel').addEventListener('click', () => {
 });
 
 // pmr already exists
-icp.on('pmr-already-exists', () => {
+ipc.on('pmr-already-exists', () => {
+    _hideOther('p.is-shown', 'is-shown');
     document.getElementById('error-pmr-exists').classList.add('is-shown');
+});
+
+ipc.on('pmr-created-success', () => {
+    window.close();
 });
 
 // sev buttons
 const sevBtns = document.getElementsByTagName('td');
 Array.from(sevBtns, btn => btn.addEventListener('click', function(event) {
     // unselect currently selected
-    const curr_selected = document.querySelectorAll('td.is-selected');
-    Array.prototype.forEach.call(curr_selected, function(section) {
-        section.classList.remove('is-selected');
-    });
+    _hideOther('td.is-selected', 'is-selected');
     // select clicked sev
     event.currentTarget.classList.add('is-selected');
 }));
@@ -47,6 +48,7 @@ function _validCode(code) {
     return code && code.trim().length;
 }
 
-function showError(msg) {
-
+function _hideOther(identifier, className) {
+    const curr_shown = document.querySelectorAll(identifier);
+    if (curr_shown.length) { curr_shown[0].classList.remove(className); }
 }
