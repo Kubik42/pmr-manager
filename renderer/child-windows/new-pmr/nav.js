@@ -12,8 +12,8 @@ document.getElementById('submit').addEventListener('click', () => {
         document.getElementById('error-invalid-form').classList.add('is-shown');
         return;
     }
-    // send title and code to main process.
-    ipc.send('new-pmr-created', [title, code, parseInt(severity[0].innetText)]);
+    // send to main process.
+    ipc.send('new-pmr-created', [code, title, parseInt(severity[0].innerText)]);
 });
 
 // cancel
@@ -27,8 +27,15 @@ ipc.on('pmr-already-exists', () => {
     document.getElementById('error-pmr-exists').classList.add('is-shown');
 });
 
+// pmr created successfully
 ipc.on('pmr-created-success', () => {
     window.close();
+});
+
+// pmr failed to create, some error occurred.
+ipc.on('pmr-creation-failed', () => {
+    _hideOther('p.is-shown', 'is-shown');
+    document.getElementById('error-failed-to-create').classList.add('is-shown');
 });
 
 // sev buttons

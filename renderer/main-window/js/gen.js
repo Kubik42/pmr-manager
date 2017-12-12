@@ -1,9 +1,9 @@
-const widgetWidth = 35;
+const WIDGET_WIDTH = 35;
 
 function createWidget(code, title, severity, category='active') {
     // Truncate the title if it exceeds the widget width.
-    if (title.length > widgetWidth) {
-        title = title.substring(0, widgetWidth - 3);
+    if (title.length > WIDGET_WIDTH) {
+        title = title.substring(0, WIDGET_WIDTH - 3);
         title += "...";
     }
 

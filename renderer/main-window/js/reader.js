@@ -5,7 +5,7 @@ const fs = require('fs');
 
 // Process all pmrs in the database.
 $(document).ready(function() {
-	var files = glob.sync(path.join(__dirname, '../json/db/*/pmr.json'));
+	var files = glob.sync(path.join(__dirname, '../../../db/*/pmr.json'));
 	var counter = 0;
 	files.forEach(function(f) {
 		fs.readFile(f, function(err, data) {
@@ -17,7 +17,7 @@ $(document).ready(function() {
 
 			// Create the and cache it.
 			var pmrHtml = createContent(pmr);
-			fs.writeFile(path.join(__dirname, '../cache/' + stripCommas(pmr.code) + '.html'), pmrHtml, function(err) {
+			fs.writeFile(path.join(__dirname, '../cache/' + pmr.code + '.html'), pmrHtml, function(err) {
 				if (err) throw err;
 			});
 

@@ -9,8 +9,8 @@
             <h2>Enter PMR details:</h2>
             <!-- title and code -->
             <form>
-                <input id="title" type="text" placeholder="Title" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Title'"><br>
                 <input id="code" type="text" placeholder="Code" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Code'"><br>
+                <input id="title" type="text" placeholder="Title" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Title'"><br>
             </form>
             <table>
                 <tr>
@@ -24,6 +24,7 @@
             <div style="height: 40px; margin-bottom: 15px">
                 <p id='error-pmr-exists' class='error'>A PMR with that code already exists in the database</p>
                 <p id='error-invalid-form' class='error'>All fields must be filled in</p>
+                <p id='error-failed-to-create' class='error'>PMR failed to create. See console for more information.</p>
             </div>
             <!-- submit or cancel -->
             <button id="submit">Submit</a>

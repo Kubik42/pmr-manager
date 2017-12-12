@@ -3,17 +3,27 @@ const path = require('path')
 const url = require('url')
 const glob = require('glob');
 const fs = require('fs');
+const fse = require('fs-extra');
 const ipc = require('electron').ipcMain;    
 
 var mainWindow = null;
 
 ipc.on('new-pmr-created', function (event, data) {
-    var dir = 'renderer/main-window/json/db/' + data[1];
-    if (!fs.existsSync(dir)){
-        fs.mkdirSync(dir);
-        // cp main-window/json/template.json main-window/json/db/code/code.pmr
-        mainWindow.webContents.send('new-pmr-created', data);
-        event.sender.send('pmr-created-success');
+    var code= data[0];
+    if (!fs.existsSync('db/' + code)) {
+        fs.mkdirSync('db/' + code);
+        fse.copy(path.join(__dirname, 'db/template.json'), path.join(__dirname, 'db', code, 'pmr.json'), err => {
+            if (err) {
+                console.error('copy: Failed to copy template.json to db/' + code + '/pmr.json');
+                console.error(err);
+                event.sender.send('pmr-creation-failed');
+                console.log('removing created directory: db/' + code);
+                fse.remove('db/' + code);
+            } else {
+                mainWindow.webContents.send('new-pmr-created', data);
+                event.sender.send('pmr-created-success');
+            }
+        });
     } else {
         event.sender.send('pmr-already-exists');
     }

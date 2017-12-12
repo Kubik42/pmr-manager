@@ -1,9 +1,3 @@
-const fse = require('fs-extra');
-
-// ===============================================================================
-// Handlers
-// ===============================================================================
-
 function handleCategoryTrigger(event) {
     hideOtherCategoriesAndDeselectButtons('.pmr-category-button', '.pmr-list');
 
@@ -66,28 +60,6 @@ function handleEditTrigger(event) {
 }
 
 // ===============================================================================
-// File reader
-// ===============================================================================
-
-/*
- * Reads the json for the specified pmr and passes its parsed form to a callback 
- * function. The callback should make changes to the json and return it. This result 
- * is then written back to the pmr json. Upon completion of the write, an optional 
- * trigger function is called to trigger any post-process events.
- */
-function fileReader(id, trigger, callback) {
-    var code = addCommas(id);
-    fse.readFile(path.join(__dirname, 'renderer/main-window/json/db', code, 'pmr.json'), function(err, data) {
-        var json = JSON.parse(data);
-        json = callback(json);
-        fse.writeFile(path.join(__dirname, 'renderer/main-window/json/db', code, 'pmr.json'), JSON.stringify(json, null, 4), function(err) {
-            if (err) throw err;
-            if (trigger) trigger();
-        });
-    }); 
-}
-
-// ===============================================================================
 // Helpers
 // ===============================================================================
 
@@ -122,7 +94,7 @@ function showPMR(id) {
         showEditBar(pmr.dataset.section);
     } else {
         // Load in for the first time
-        $.get('renderer/main-window/cache/' + id + '.html', function(cont) {
+        $.get('renderer/main-window/cache/' + addCommas(id) + '.html', function(cont) {
             $('#content').append(cont);
             showEditBar(document.getElementById(id).dataset.section);
         });
@@ -141,7 +113,7 @@ function showEditBar(category) {
  */
 function save(id) {
     var pmr = document.getElementById(id);
-    function callback(json) {
+    function editf(json) {
         json.title            = pmr.querySelector('#pmr-title').textContent;
 
         json.environment.OS   = pmr.querySelector('#pmr-os').textContent;
@@ -159,7 +131,8 @@ function save(id) {
         // TODO: find a way to preserve newlines
         return json;
     }
-    fileReader(id, null, callback);
+    var pmrJsonPath = path.join(__dirname, 'db', addCommas(id), 'pmr.json');
+    jsonEditor(pmrJsonPath, pmrJsonPath, editf, null);
 }
 
 /*
@@ -167,8 +140,12 @@ function save(id) {
  */
 function purge(id) {
     fse.remove('db/' + addCommas(id), function(err) {
-        if (err) throw err;
-        $(document).trigger('purged', [id])
+        if (err) {
+            console.error('Could not purge pmr ' + addCommas(id));
+            console.error(err);
+        } else {
+            $(document).trigger('purged', [id])
+        }
     });
     // remove stored restore point
     removeFromLocalStorage('restore-' + id);
@@ -190,15 +167,16 @@ function restore(restoreTo) {
  * Sets the category of the PMR to the specified one and writes it back to the xml.
  */
 function setCategory(id, setTo) {
-    function trigger() {
+    function callback() {
         $(document).trigger('changed-category', [id, setTo]);
     }
-    function callback(json) {
+    function editf(json) {
         changeGlobalList(id, json.category, setTo);
         json.category = setTo;
         return json;
     }
-    fileReader(id, trigger, callback);
+    var pmrJsonPath = path.join(__dirname, 'db', addCommas(id), 'pmr.json');
+    jsonEditor(pmrJsonPath, pmrJsonPath, editf, callback);
 }
 
 /*
@@ -214,4 +192,33 @@ function forgetWidget() {
 
     // remove reference to the currently active pmr.
     currActivePmrId = null;
+}
+
+function handleNewPmrCreation(code, title, severity) {
+    function editf(json) {
+        json.code = code;
+        json.title = title;
+        json.severity = severity;
+        json.category = 'active';
+        return json;
+    }
+    function callback() {
+        // Create widget for new pmr.
+        var widgetHtml = createWidget(code, title, severity);
+        addWidget(widgetHtml, code);
+
+        // Create content for new pmr and cache it.
+        fse.readFile(path.join(__dirname, 'db', code, 'pmr.json'), function(err, data) {
+            var pmrHtml = createContent(JSON.parse(data));
+            fse.writeFile(path.join(__dirname, 'renderer/main-window/cache/' + code + '.html'), pmrHtml, function(err) {
+                if (err) {
+                    console.log('writeFile: failed to create content for new pmr');
+                    console.error(err);
+                }
+            });
+        });
+    }
+
+    var pmrJsonPath = path.join(__dirname, 'db', code, 'pmr.json');
+    jsonEditor(pmrJsonPath, pmrJsonPath, editf, callback);
 }

@@ -6,7 +6,11 @@ const storage = require('electron-json-storage');
 function loadFromLocalStorage() {
     // category
     storage.get('activeCategoryButtonId', function(err, id) {
-        if (err) throw err;
+        if (err) {
+            console.error('storage: failed to retrieve data under activeCategoryButtonId');
+            console.error(err);
+            return;
+        }
 
         if (id && id.length) {
             document.getElementById(id).click();
@@ -16,7 +20,11 @@ function loadFromLocalStorage() {
     });
     // widget
     storage.get('activePmrId', function(err, id) {
-        if (err) throw err;
+        if (err) {
+            console.error('storage: failed to retrieve data under activePmrId');
+            console.error(err);
+            return;
+        }
 
         if (id && id.length) {
             currActivePmr = id;
@@ -31,8 +39,12 @@ function loadFromLocalStorage() {
  */
 function getFromLocalStorage(key, callback) {
     storage.get(key, function(err, xKey) {
-        if (err) throw err;
-        callback(xKey);
+        if (err) {
+            console.error('storage: failed to retrieve data under ' + key);
+            console.error(err);
+        } else {
+            callback(xKey);
+        }
     });
 }
 
@@ -41,7 +53,10 @@ function getFromLocalStorage(key, callback) {
  */
 function saveToLocalStorage(value, key) {
     storage.set(key, value, function (err) {
-        if (err) throw err;
+        if (err) {
+            console.error('storage: failed to save to key ' + key);
+            console.error(err);
+        }
     });
 }
 
@@ -50,7 +65,10 @@ function saveToLocalStorage(value, key) {
  */
 function removeFromLocalStorage(key) {
     storage.remove(key, function(err) {
-        if (err) throw err;
+        if (err) {
+            console.error('storage: failed to remove data under ' + key);
+            console.error(err);
+        }
     });
 }
 

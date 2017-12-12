@@ -32,8 +32,10 @@ $(document).on('purged', function(event, id) {
 // Process communication.
 // ===============================================================================
 
+/*
+ * Handle new pmr creation.
+ */
 ipc.on('new-pmr-created', function(event, data) {
-    // data = [code, title, severity(int)]
-    var widgetHtml = createWidget(data[1], data[0], data[2]);
-    addWidget(widgetHtml, data[1]);
+    var [code, title, severity] = data;
+    handleNewPmrCreation(code, title, severity)
 });
