@@ -44,7 +44,7 @@ function createContent(pmr) {
     var title        = "<h1 id='pmr-title'>" + pmr.title + "</h1>";
     var env          = pmr.environment;
     var separator    = "<li>|</li>";
-    var OS           = "<li><p id='pmr-os'>" + env.OS + "<p></li>";
+    var OS           = "<li><h1>OS&nbsp</h1><p id='pmr-os'>" + env.OS + "<p></li>";
     var JDK          = "<li><h1>JDK&nbsp</h1><p id='pmr-jdk'>" + env.JDK + "</p></li>";
     var WASVersion   = "<li><h1>WAS&nbsp</h1><p id='pmr-wasv'>" + env.WASv + "</p></li>";
     var env          = "<ul id='pmr-env-list'>" + OS + separator + JDK + separator + WASVersion + "</ul>";

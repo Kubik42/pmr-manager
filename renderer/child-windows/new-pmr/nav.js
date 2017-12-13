@@ -1,6 +1,6 @@
 const ipc = require('electron').ipcRenderer;
 
-// submit
+// Submit.
 document.getElementById('submit').addEventListener('click', () => {
     var title = document.getElementById('title').value;
     var code = document.getElementById('code').value;
@@ -16,36 +16,38 @@ document.getElementById('submit').addEventListener('click', () => {
     ipc.send('new-pmr-created', [code, title, parseInt(severity[0].innerText)]);
 });
 
-// cancel
+// Cancel.
 document.getElementById('cancel').addEventListener('click', () => {
     window.close();
 });
 
-// pmr already exists
+// Sev buttons.
+const sevBtns = document.getElementsByTagName('td');
+Array.from(sevBtns, btn => btn.addEventListener('click', function(event) {
+    _hideOther('td.is-selected', 'is-selected');
+    event.currentTarget.classList.add('is-selected');
+}));
+
+// -------------------------------------------------------------------------------------
+
+// PMR already exists.
 ipc.on('pmr-already-exists', () => {
     _hideOther('p.is-shown', 'is-shown');
     document.getElementById('error-pmr-exists').classList.add('is-shown');
 });
 
-// pmr created successfully
+// PMR created successfully.
 ipc.on('pmr-created-success', () => {
     window.close();
 });
 
-// pmr failed to create, some error occurred.
+// PMR failed to create, some error occurred.
 ipc.on('pmr-creation-failed', () => {
     _hideOther('p.is-shown', 'is-shown');
     document.getElementById('error-failed-to-create').classList.add('is-shown');
 });
 
-// sev buttons
-const sevBtns = document.getElementsByTagName('td');
-Array.from(sevBtns, btn => btn.addEventListener('click', function(event) {
-    // unselect currently selected
-    _hideOther('td.is-selected', 'is-selected');
-    // select clicked sev
-    event.currentTarget.classList.add('is-selected');
-}));
+// -------------------------------------------------------------------------------------
 
 function _validTitle(title) {
     return title && title.trim().length;
@@ -55,6 +57,9 @@ function _validCode(code) {
     return code && code.trim().length;
 }
 
+/*
+ * Removes className class from elements with given identifier.
+ */
 function _hideOther(identifier, className) {
     const curr_shown = document.querySelectorAll(identifier);
     if (curr_shown.length) { curr_shown[0].classList.remove(className); }

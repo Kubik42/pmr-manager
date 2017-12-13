@@ -4,7 +4,7 @@ const storage = require('electron-json-storage');
  * Activates any active (shown/selected) elements from the previous run of the app.
  */
 function loadFromLocalStorage() {
-    // category
+    // Category.
     storage.get('activeCategoryButtonId', function(err, id) {
         if (err) {
             console.error('storage: failed to retrieve data under activeCategoryButtonId');
@@ -18,7 +18,8 @@ function loadFromLocalStorage() {
             activateDefaultCategory();
         }
     });
-    // widget
+    
+    // Widget.
     storage.get('activePmrId', function(err, id) {
         if (err) {
             console.error('storage: failed to retrieve data under activePmrId');

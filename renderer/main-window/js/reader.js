@@ -1,14 +1,12 @@
-window.$ = window.jQuery = require('jquery');
-
 const glob = require('glob');
-const fs = require('fs');
 
-// Process all pmrs in the database.
+// Process all pmr jsons in the database.
 $(document).ready(function() {
-	var files = glob.sync(path.join(__dirname, '../../../db/*/pmr.json'));
+	var files = glob.sync(path.join(__dirname, 'db/*/pmr.json'));
 	var counter = 0;
 	files.forEach(function(f) {
-		fs.readFile(f, function(err, data) {
+		fse.readFile(f, function(err, data) {
+			// Parse raw json into object.	
 			var pmr = JSON.parse(data);
 
 			// Create the widget html and add it to the DOM.
@@ -17,7 +15,7 @@ $(document).ready(function() {
 
 			// Create the and cache it.
 			var pmrHtml = createContent(pmr);
-			fs.writeFile(path.join(__dirname, '../cache/' + pmr.code + '.html'), pmrHtml, function(err) {
+			fse.writeFile(path.join(__dirname, 'renderer/main-window/cache', pmr.code + '.html'), pmrHtml, function(err) {
 				if (err) throw err;
 			});
 

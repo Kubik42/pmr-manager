@@ -1,0 +1,20 @@
+{
+    "code": null,
+    "category": null,
+    "title": null,
+    "severity": null,
+    "age": null,
+    "contact": null,
+    "environment": {
+        "OS": null,
+        "JDK": null,
+        "WASv": null
+    },
+    "description": "Describe what this PMR is about",
+    "latest": "Latest customer interaction / update.",
+    "resolution": "Steps to resolve the problem described above.",
+    "tags": [
+        "ejb",
+        "mine"
+    ]
+}

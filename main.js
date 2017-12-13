@@ -12,7 +12,7 @@ ipc.on('new-pmr-created', function (event, data) {
     var code= data[0];
     if (!fs.existsSync('db/' + code)) {
         fs.mkdirSync('db/' + code);
-        fse.copy(path.join(__dirname, 'db/template.json'), path.join(__dirname, 'db', code, 'pmr.json'), err => {
+        fse.copy(path.join(__dirname, 'resources/template.json'), path.join(__dirname, 'db', code, 'pmr.json'), err => {
             if (err) {
                 console.error('copy: Failed to copy template.json to db/' + code + '/pmr.json');
                 console.error(err);
