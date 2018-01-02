@@ -9,6 +9,7 @@ function handleCategoryTrigger(event) {
     if (pmrList) pmrList.classList.add('is-shown');
 
     // Save currently active button in localStorage
+    currActiveCategory = event.target.dataset.section;
     saveToLocalStorage(event.currentTarget.getAttribute('id'), 'activeCategoryButtonId');
 }
 

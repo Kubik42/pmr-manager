@@ -11,6 +11,8 @@ var trshLst = [];
 
 // Currently active pmr id.
 var currActivePmrId;
+// Currently active section.
+var currActiveCategory;
 
 /*
  * Adds pmr with given id and category to appropriate global list.

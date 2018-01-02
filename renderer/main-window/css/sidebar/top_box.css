@@ -18,7 +18,7 @@
 	background-color: inherit;
 }
 
-.search-field {
+#search-field {
 	width: 100%;
 	height: 26px;
 	font-size: 15px;
@@ -30,11 +30,15 @@
 	color: inherit;
 	border-color: inherit;
 }
-.search-field::-webkit-input-placeholder {
+#search-field::-webkit-input-placeholder {
 	/* make the color light gray when not in focus */
 	color: inherit;
 }
-.search-field:focus {
+/* search cancel button */
+#search-field::-webkit-search-cancel-button {
+	margin-right: 5px;
+}
+#search-field:focus {
 	border-color: #138dff;
 	color: gray;
 	outline: none !important;
