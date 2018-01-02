@@ -2,10 +2,10 @@
 
 ## TODO:
 - Must
--- File attatchements
--- Recreate non-existant directories (ex. "cache")
--- Properly render newlines
+* File attatchements
+* Recreate non-existant directories (ex. "cache")
+* Properly render newlines
 - Bugs
--- links go offscreen?
+* links go offscreen?
 - Bonus
--- tags
+* tags
