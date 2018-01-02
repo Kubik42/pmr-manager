@@ -34,4 +34,6 @@ function addEventListeners() {
     Array.from(editBtns, btn => btn.addEventListener('click', function(event) {
         handleEditTrigger(event);
     }));
+
+    document.getElementById('search-field').addEventListener('input', searchPmrs);
 }

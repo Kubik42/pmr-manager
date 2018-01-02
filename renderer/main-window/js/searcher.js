@@ -1,6 +1,5 @@
 function searchPmrs() {
-    var input = document.getElementById("search-field");
-    var filter = input.value.toLowerCase();
+    var filter = document.getElementById("search-field").value.toLowerCase();
     var list = document.getElementById(currActiveCategory + '-list');
     var widgets = list.getElementsByClassName('pmr-widget');
 
