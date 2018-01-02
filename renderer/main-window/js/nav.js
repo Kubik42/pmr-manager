@@ -35,5 +35,6 @@ function addEventListeners() {
         handleEditTrigger(event);
     }));
 
+    // Search field.
     document.getElementById('search-field').addEventListener('input', searchPmrs);
 }
