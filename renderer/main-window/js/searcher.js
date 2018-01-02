@@ -1,3 +1,7 @@
+/*
+ * Searches through all PMRs in the database for the string input in the
+ * search field.
+ */
 function searchPmrs() {
     var filter = document.getElementById("search-field").value.toLowerCase();
     var list = document.getElementById(currActiveCategory + '-list');
@@ -20,6 +24,10 @@ function searchPmrs() {
     });
 }
 
+/*
+ * Searches the given json recursively for the given value. Returns true if 
+ * that value exists and false otherwise.
+ */
 function _containsValue(json, value) {
     for (k in json) {
         if (typeof json[k] === 'object') {
