@@ -9,7 +9,6 @@
 
 **Bugs**
 - links go offscreen?
-- searcher treats the whole html as a string -> doesn't search title, contact, etc. 
 
 **Bonus**
 - Sorting via tags
