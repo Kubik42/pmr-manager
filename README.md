@@ -1,4 +1,4 @@
-# pmr-manager
+# spicy pmr-manager
 
 ## TODO:
 
