@@ -1,0 +1,15 @@
+{
+    "tags": [
+        {
+            "name": "ejb",
+            "default": true
+        },
+        {
+            "name": "mine",
+            "default": true
+        },
+        {
+            "name": "maximo"
+        }
+    ]
+}

@@ -17,7 +17,6 @@ ipc.on('new-pmr-created', function (event, data) {
                 console.error('copy: Failed to copy template.json to db/' + code + '/pmr.json');
                 console.error(err);
                 event.sender.send('pmr-creation-failed');
-                console.log('removing created directory: db/' + code);
                 fse.remove('db/' + code);
             } else {
                 mainWindow.webContents.send('new-pmr-created', data);
@@ -30,14 +29,19 @@ ipc.on('new-pmr-created', function (event, data) {
 });
 
 app.on('ready', function () {
-    // if another process is already open, focus to it instead
+    // If another process is already open, focus to it instead
     if (makeSingleInstance()) {
         console.log("Another instance of the app is already running. Closing...");
         return app.quit();
     }
-    // otherwise, start the app
+    // Otherwise, start the app
     createWindow();
     loadScripts();
+
+    // Create missing directories
+    if (!fs.existsSync('renderer/main-window/cache')) {
+        fs.mkdirSync('renderer/main-window/cache');
+    }
 });
 
 app.on('window-all-closed', function () {
