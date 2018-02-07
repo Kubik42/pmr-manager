@@ -1,4 +1,4 @@
-# spicy pmr-manager
+# A spicy personal PMR manager
 
 ## Installation
 
