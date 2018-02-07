@@ -42,6 +42,9 @@ app.on('ready', function () {
     if (!fs.existsSync('renderer/main-window/cache')) {
         fs.mkdirSync('renderer/main-window/cache');
     }
+    if (!fs.existsSync('db')) {
+        fs.mkdirSync('db');
+    }
 });
 
 app.on('window-all-closed', function () {
