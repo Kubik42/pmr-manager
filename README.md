@@ -6,15 +6,21 @@ Personal PMR management tool that helps you track your PMR activity.
 
 First, clone the repository:
 
-```git clone https://github.com/Kubik42/pmr-manager```
+```
+git clone https://github.com/Kubik42/pmr-manager
+```
 
 Then navigate into it and run:
 
-```npm install```
+```
+npm install
+```
 
 This will pull in all node dependencies for you. Once thats finished, the app can be started with: 
 
-```npm start```
+```
+npm start
+```
 
 **Currently only tested on Macs (Windows definitely requires a separate installer to work)**
 
