@@ -1,4 +1,6 @@
-# A spicy personal PMR manager
+# A spicy PMR manager
+
+Personal PMR management tool that helps you track your PMR activity.
 
 ## Installation
 
