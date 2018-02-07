@@ -19,11 +19,11 @@ $(document).ready(function() {
 				if (err) throw err;
 			});
 
-			// Trigger after all files have been processed.
 			counter++;
-			if (counter === files.length) {
-				$(document).trigger('completed-json-parse');
-			}
 		});
 	});
+	// Trigger after all files have been processed.
+	if (counter === files.length) {
+		$(document).trigger('completed-json-parse');
+	}
 });
