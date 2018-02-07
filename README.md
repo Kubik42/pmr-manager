@@ -4,7 +4,6 @@
 
 **Must**
 - File attatchements
-- Recreate non-existant directories (ex. "cache")
 - Properly render newlines
 
 **Bugs**
