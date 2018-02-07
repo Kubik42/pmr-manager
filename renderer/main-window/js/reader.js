@@ -3,6 +3,11 @@ const glob = require('glob');
 // Process all pmr jsons in the database.
 $(document).ready(function() {
 	var files = glob.sync(path.join(__dirname, 'db/*/pmr.json'));
+	
+	if (files.length === 0) {
+		$(document).trigger('completed-json-parse');
+	}
+
 	var counter = 0;
 	files.forEach(function(f) {
 		fse.readFile(f, function(err, data) {
@@ -19,11 +24,11 @@ $(document).ready(function() {
 				if (err) throw err;
 			});
 
+			// Trigger after all files have been processed.
 			counter++;
+			if (counter === files.length) {
+				$(document).trigger('completed-json-parse');
+			}
 		});
 	});
-	// Trigger after all files have been processed.
-	if (counter === files.length) {
-		$(document).trigger('completed-json-parse');
-	}
 });
