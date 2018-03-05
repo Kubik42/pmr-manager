@@ -2,6 +2,9 @@
 
 Personal PMR management tool that helps you track your PMR activity.
 
+![PMR Manager](resources/pmr-manager.png)
+
+
 ## Installation
 
 First, clone the repository:
