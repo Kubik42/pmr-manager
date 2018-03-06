@@ -10,9 +10,9 @@
         "JDK": null,
         "WASv": null
     },
-    "description": "Describe what this PMR is about",
-    "latest": "Latest customer interaction / update.",
-    "resolution": "Steps to resolve the problem described above.",
+    "description": "Briefly describe what this PMR is about.",
+    "latest": "Latest customer-developer interaction/update.",
+    "resolution": "Summarize the steps that were taken to resolve the problem described above.",
     "tags": [
         "ejb",
         "mine"
