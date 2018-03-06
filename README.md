@@ -2,7 +2,7 @@
 
 Personal PMR management tool that helps you track your PMR activity.
 
-![img](https://i.imgur.com/i8qWAFK.png)
+![PMR Manager](resources/pmr-manager.png)
 
 
 ## Installation
