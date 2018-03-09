@@ -19,7 +19,7 @@ Then navigate into it and run:
 npm install
 ```
 
-This will pull in all node dependencies for you. Once thats finished, the app can be started with: 
+This will pull in all node dependencies for you including Electron. Once thats finished, the app can be started with: 
 
 ```
 npm start
