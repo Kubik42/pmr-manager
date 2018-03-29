@@ -1,6 +1,6 @@
 # A spicy PMR manager
 
-Personal PMR management tool that helps you track your PMR activity.
+A personal PMR management tool that tracks your PMR activity.
 
 ![PMR Manager](resources/pmr-manager.png)
 
