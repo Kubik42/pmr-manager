@@ -1,8 +1,13 @@
 # A spicy PMR manager
 
-Personal PMR management tool that helps you track your PMR activity.
+A personal PMR management tool that tracks your PMR activity.
 
 ![PMR Manager](resources/pmr-manager.png)
+
+
+## Prerequisites 
+
+- Node
 
 
 ## Installation
@@ -19,7 +24,7 @@ Then navigate into it and run:
 npm install
 ```
 
-This will pull in all node dependencies for you. Once thats finished, the app can be started with: 
+This will pull in all node dependencies for you including Electron. Once thats finished, the app can be started with: 
 
 ```
 npm start
