@@ -2,6 +2,7 @@
  * Add commas to the pmr id. Returns full pmr code.
  */
 function addCommas(id) {
+    if (id.startsWith('T')) { return id; } 
     return id.substr(0, 5) + ',' + id.substr(5, 3) + ',' + id.substr(8, 3);
 }
 
