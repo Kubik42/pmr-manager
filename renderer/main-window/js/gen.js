@@ -53,8 +53,7 @@ function createContent(pmr) {
     // Miscellaneous information section.
     var severity     = "<li><b>Severity: </b><p id='pmr-sev'>" + pmr.severity + "</p></li>";
     var date         = "<li><b>Date created: </b><p id='pmr-date'>" + pmr.age + "</p></li>";
-    var contact      = "<li><b>Contact: </b><p id='pmr-contact'>" + pmr.contact + "</p></li>";
-    var info         = "<div class='pmr-section clearfix not-dragable'><ul id='pmr-info-list'>" + severity + date + contact + "</ul></div>";
+    var info         = "<div class='pmr-section clearfix not-dragable'><ul id='pmr-info-list'>" + severity + date + "</ul></div>";
 
     // Description, latest update, and resolution sections.
     var description  = "<div class='pmr-section not-dragable'><h1>Description</h1><p id='pmr-description'>" + pmr.description + "</p></div>";
