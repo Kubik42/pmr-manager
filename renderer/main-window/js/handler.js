@@ -123,7 +123,6 @@ function save(id) {
 
         json.severity         = parseInt(pmr.querySelector('#pmr-sev').textContent);
         json.age              = pmr.querySelector('#pmr-date').textContent;
-        json.contact          = pmr.querySelector('#pmr-contact').textContent;
 
         json.description      = pmr.querySelector('#pmr-description').textContent;
         json.latest           = pmr.querySelector('#pmr-update').textContent;
